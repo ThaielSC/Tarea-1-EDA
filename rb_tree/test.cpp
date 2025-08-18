@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 int* readKeysFromFile(std::string filename, int* n_keys){
     std::ifstream  fin(filename, std::ios::binary); 
@@ -27,13 +28,24 @@ int* readKeysFromFile(std::string filename, int* n_keys){
 
 int main(int nargs, char** vargs){
     int n_data = 0;
-    int* data = readKeysFromFile("keys_sorted.bin", &n_data);
-    trees::RB rbtree;
-    for(int i=0; i<n_data;i++){
-        std::cout<< "inserting " << data[i] << std::endl;
-        rbtree.insert(data[i]);
-    } 
-    rbtree.traverse();
+    std::vector<std::string> vec(5);
+    vec[0] = "/home/jmsaavedrar/Research/git/otros/keys_1024.bin";
+    vec[1] = "/home/jmsaavedrar/Research/git/otros/keys_32768.bin";
+    vec[2] = "/home/jmsaavedrar/Research/git/otros/keys_1048576.bin"; 
+    vec[3] = "/home/jmsaavedrar/Research/git/otros/keys_33554432.bin";
+    vec[4] = "/home/jmsaavedrar/Research/git/otros/queries_1000.bin";
+    for (auto f:vec){
+        int* data = readKeysFromFile(f, &n_data);
+        std::cout<<n_data <<std::endl;
+        delete[] data;
+    }
+
+    // trees::RB rbtree;
+    // for(int i=0; i<n_data;i++){
+    //     std::cout<< "inserting " << data[i] << std::endl;
+    //     rbtree.insert(data[i]);
+    // } 
+    // rbtree.traverse();
 
     return 0;
 }
