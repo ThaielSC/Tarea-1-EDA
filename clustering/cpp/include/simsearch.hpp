@@ -1,5 +1,7 @@
 #ifndef _SIM_SEARCH_HPP
 #define _SIM_SEARCH_HPP
+#include "matrix.hpp"
+
 
 class SimSearch{
 private:
@@ -7,9 +9,9 @@ private:
     const Matrix &mat_clusters; // centroids to be used
 
 public:
-    SimSearch(Matrix, clusters);
-    std::vector<size_t> search_with_clusters(const float *query,  top_k);
-    std::vector<size_t> search_without(const float *query, top_k);
-}
+    SimSearch(const Matrix &data, const Matrix &clusters);
+    std::vector<size_t> search_with_clusters(const float *query, size_t top_k);
+    std::vector<size_t> search_without(const float *query, size_t top_k);
+};
 
 #endif 

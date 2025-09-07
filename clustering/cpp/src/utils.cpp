@@ -49,3 +49,22 @@ void print_array(const float *array, size_t d){
     }
     std::cout<< std::endl;
 }
+
+size_t* argsort(float* array, size_t d) {
+    std::vector<size_t> indices(d);
+    for (size_t i = 0; i < d; i++) {
+        indices[i] = i;
+    }
+
+    std::sort(indices.begin(), indices.end(),
+              [&](size_t i, size_t j) {
+                  return array[i] < array[j];
+              });
+
+    size_t* result = new size_t[d];
+    for (size_t i = 0; i < d; i++) {
+        result[i] = indices[i];
+    }
+
+    return result;
+}

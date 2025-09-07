@@ -12,16 +12,16 @@
  }
 
 int main(int args, char* vargs[]){
-    // Matrix mat(2,2);
-    // float x[] = {1,2};
-    // mat.show();
-    // vec_add(x, x, 2);
-    // vec_divide(x, 3, 2);
-    // mat.setRow(0, x);
-    // mat.show();
+    Matrix mat(2,2);
+    float x[] = {1,2};
+    mat.show();
+    vec_add(x, x, 2);
+    vec_divide(x, 3, 2);
+    mat.setRow(0, x);
+    mat.show();
     // return 0;
-    std::string str_data("/home/jmsaavedrar/Research/git/eda_cpp/clustering/data_eda.npy");
-    Matrix mat(str_data);
+    //std::string str_data("/home/jmsaavedrar/Research/git/eda_cpp/clustering/data_eda.npy");
+    //Matrix mat(str_data);
     const float *row = mat.getRow(999);
     
     print_array(row, mat.getDim());
