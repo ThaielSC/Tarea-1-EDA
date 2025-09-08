@@ -1,8 +1,7 @@
-#include "cluster.hpp"
-
 #include <algorithm>
 #include <cstring>
 
+#include "cluster.hpp"
 #include "utils.hpp"
 
 Cluster::Cluster(const Matrix &mat, size_t k)

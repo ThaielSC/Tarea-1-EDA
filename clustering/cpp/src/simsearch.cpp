@@ -1,7 +1,6 @@
-#include "simsearch.hpp"
-
 #include <vector>
 
+#include "simsearch.hpp"
 #include "utils.hpp"
 
 SimSearch::SimSearch(const Matrix &data, const Matrix &clusters)
@@ -25,4 +24,9 @@ std::vector<size_t> SimSearch::search_without(const float *query, size_t m) {
   }
   delete[] sorted_indices;
   return result;
+}
+
+std::vector<size_t> SimSearch::search_with_clusters(const float *query,
+                                                    size_t top_k) {
+  return {0};
 }
