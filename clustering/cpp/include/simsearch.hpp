@@ -8,6 +8,7 @@ class SimSearch {
  private:
   const Matrix &mat_data;      // data to be processed
   const Matrix &mat_clusters;  // centroids to be used
+  std::vector<std::vector<size_t>> cluster_members;
 
  public:
   SimSearch(const Matrix &data, const Matrix &clusters);

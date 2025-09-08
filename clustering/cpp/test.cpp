@@ -41,14 +41,16 @@ int main(int args, char *vargs[]) {
   int k = 8;
   Cluster c = Cluster(mat, k);
   c.applyClustering();
-  const float *j = c.getCentroid(1);
-  SimSearch s = SimSearch(mat, k);
-  std::vector<size_t> a = s.search_without(mat.getRow(0), 100);
+
+  SimSearch s(mat, c.getCentroids());
+
+  std::cout << "--- search without clusters" << std::endl;
+  std::vector<size_t> a = s.search_without(mat.getRow(0), 10);
   print_vector(a);
 
-  printf("\n");
-
-  std::cout << j[0] << "\n" << j[1] << "\n" << j[16] << std::endl;
+  std::cout << "--- search with clusters" << std::endl;
+  std::vector<size_t> b = s.search_with_clusters(mat.getRow(0), 10);
+  print_vector(b);
 
   return 0;
 }
